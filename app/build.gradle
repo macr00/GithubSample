@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.githubsample.app"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile project(':domain')
+    compile project(':data')
+
+    // Junit
+    testCompile 'junit:junit:4.12'
+    // Mockito
+    testCompile 'org.mockito:mockito-core:1.10.19'
+
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:design:24.1.1'
+    compile 'com.android.support:recyclerview-v7:24.1.1'
+
+    // RxJava
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+
+    // Butterknife
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    // Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Dagger 2
+    compile 'com.google.dagger:dagger:2.0'
+    apt 'com.google.dagger:dagger-compiler:2.0.2'
+
+    // Auto Value Parcel
+    apt 'com.ryanharter.auto.value:auto-value-parcel:0.2.3-rc2'
+    provided 'com.google.auto.value:auto-value:1.2'
+
+}
